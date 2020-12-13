@@ -1,0 +1,23 @@
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val=None, children=None):
+        self.val = val
+        self.children = children
+"""
+
+class Solution:
+    def preorder(self, root: 'Node') -> List[int]:
+        res = []
+        # 将结果单独放到递归函数外部
+        def helper(root):
+            if not root:
+                return 
+            # 先访问值
+            res.append(root.val)
+            # 在访问字树
+            for child in root.children:
+                helper(child)
+        
+        helper(root)
+        return res
